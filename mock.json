@@ -1,0 +1,19 @@
+{
+  "amount_high": 1500.75,
+  "amount_customer_high": 2300.50,
+  "score_negative" : 400,
+  "metrics": [
+    {
+      "score": 750,
+      "rate": 0.8
+    },
+    {
+      "score": 650,
+      "rate": 0.8
+    },
+    {
+      "score": 500,
+      "rate": 0.8
+    }
+  ]
+}
