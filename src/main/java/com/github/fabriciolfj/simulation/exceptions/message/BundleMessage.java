@@ -6,6 +6,7 @@ public enum BundleMessage {
 
     BUSINESS_ERROR,
     INFRA_ERROR,
+    CALCULATION_NOT_FOUND,
     DEFAULT_ERROR;
 
 

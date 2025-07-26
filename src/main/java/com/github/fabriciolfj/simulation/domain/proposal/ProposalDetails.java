@@ -20,7 +20,4 @@ public class ProposalDetails {
     private Integer numberOfInstallments;
     private SimulationStatus status;
     private LocalDateTime simulationDate;
-    private LocalDateTime approvedDate;
-    private String approvedBy;
-    private Boolean active;
 }

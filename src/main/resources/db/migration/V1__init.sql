@@ -37,7 +37,6 @@ CREATE TABLE IF NOT EXISTS simulations (
     status VARCHAR(20) NOT NULL DEFAULT 'PENDING',
     simulation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     approved_date TIMESTAMP,
-    approved_by VARCHAR(100),
     active BOOLEAN DEFAULT TRUE,
 
     CONSTRAINT uk_simulation_code UNIQUE  (code),

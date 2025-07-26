@@ -1,4 +1,4 @@
-package com.github.fabriciolfj.simulation.entrypoint.handler;
+package com.github.fabriciolfj.simulation.entrypoint.common;
 
 import com.github.fabriciolfj.simulation.exceptions.clazz.ValidationException;
 import jakarta.validation.ConstraintViolation;

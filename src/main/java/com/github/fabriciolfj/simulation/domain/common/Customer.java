@@ -21,6 +21,7 @@ public class Customer {
     private static final BigDecimal VALUE_MAX_COMMITMENT = BigDecimal.valueOf(0.4);
 
     private String cpf;
+    private Long identifier;
     private String name;
     private BigDecimal monthlyIncome;
     private Integer creditScore;

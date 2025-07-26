@@ -1,4 +1,4 @@
-package com.github.fabriciolfj.simulation.entrypoint.dto.request;
+package com.github.fabriciolfj.simulation.entrypoint.createsimulation.dto.request;
 
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -22,9 +22,9 @@ public class LoanSimulationRequestDTO {
     @Max(value = 72, message = "{loan.installments.maximum}")
     private Integer numberOfInstallments;
 
-    @NotBlank(message = "{customer.ssn.required}")
-    @Pattern(regexp = "\\d{9}", message = "{customer.ssn.format}")
-    private String customerSsn;
+    @NotBlank(message = "{customer.cpf.required}")
+    @Pattern(regexp = "\\d{9}", message = "{customer.cpf.format}")
+    private String customerCpf;
 
     @NotBlank(message = "{customer.name.required}")
     @Size(min = 2, max = 100, message = "{customer.name.size}")

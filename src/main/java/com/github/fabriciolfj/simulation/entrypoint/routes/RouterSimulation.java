@@ -1,6 +1,6 @@
 package com.github.fabriciolfj.simulation.entrypoint.routes;
 
-import com.github.fabriciolfj.simulation.entrypoint.handler.SimulationHandler;
+import com.github.fabriciolfj.simulation.entrypoint.createsimulation.handler.SimulationHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;

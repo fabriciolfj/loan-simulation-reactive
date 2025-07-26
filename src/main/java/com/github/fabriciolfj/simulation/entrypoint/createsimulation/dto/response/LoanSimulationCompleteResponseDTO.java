@@ -1,4 +1,4 @@
-package com.github.fabriciolfj.simulation.entrypoint.dto.response;
+package com.github.fabriciolfj.simulation.entrypoint.createsimulation.dto.response;
 
 import lombok.Data;
 
