@@ -1,4 +1,4 @@
-package com.github.fabriciolfj.simulation.adapter.impl;
+package com.github.fabriciolfj.simulation.adapter.savesimulation;
 
 import com.github.fabriciolfj.simulation.domain.simulation.Simulation;
 import com.github.fabriciolfj.simulation.usecase.createsimulation.SaveSimulationGateway;
