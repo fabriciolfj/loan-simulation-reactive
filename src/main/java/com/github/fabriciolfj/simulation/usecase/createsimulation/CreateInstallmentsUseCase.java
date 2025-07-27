@@ -2,16 +2,14 @@ package com.github.fabriciolfj.simulation.usecase.createsimulation;
 
 import com.github.fabriciolfj.simulation.domain.simulation.Installment;
 import com.github.fabriciolfj.simulation.domain.simulation.Simulation;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.IntStream;
-
-import static com.github.fabriciolfj.simulation.domain.common.ConstAmount.PERCENTAGE;
 
 @Service
 public class CreateInstallmentsUseCase {
@@ -37,36 +35,34 @@ public class CreateInstallmentsUseCase {
                 .toList();
     }
 
-    private BigDecimal calculateInterestAmount(final BigDecimal value, final Simulation simulation) {
-        return value
-                .multiply(simulation.getMonthlyInterestRate())
-                .divide(BigDecimal.valueOf(PERCENTAGE), 2, RoundingMode.HALF_UP);
-    }
-
     private Installment createInstallment(final int installmentNumber,
                                           final AtomicReference<BigDecimal> remainingBalance,
                                           final Simulation simulation,
                                           final boolean isLastInstallment) {
 
-        BigDecimal interestAmount = calculateInterestAmount(remainingBalance.get(), simulation);
-
-        BigDecimal principalAmount = simulation.getInstallmentAmount().subtract(interestAmount);
+        BigDecimal interestAmount = simulation.calculateInterestAmount(remainingBalance.get());
+        BigDecimal principalAmount = simulation.calcSubtractInstallmentAmount(interestAmount);
 
         if (isLastInstallment && remainingBalance.get().compareTo(BigDecimal.ZERO) != 0) {
             principalAmount = remainingBalance.get();
-            interestAmount = simulation.getInstallmentAmount().subtract(principalAmount);
+            interestAmount = simulation.calcSubtractInstallmentAmount(principalAmount);
         }
-
-        final BigDecimal newBalance = remainingBalance.get().subtract(principalAmount);
-        remainingBalance.set(newBalance);
 
         return Installment.builder()
                 .installmentNumber(installmentNumber)
                 .installmentAmount(simulation.getInstallmentAmount())
                 .interestAmount(interestAmount)
                 .principalAmount(principalAmount)
-                .remainingBalance(newBalance)
+                .remainingBalance(updateNewBalance(remainingBalance, principalAmount))
                 .dueDate(simulation.calculateDueDate(installmentNumber))
                 .build();
+    }
+
+    @NotNull
+    private static BigDecimal updateNewBalance(final AtomicReference<BigDecimal> remainingBalance, final BigDecimal principalAmount) {
+        final BigDecimal newBalance = remainingBalance.get().subtract(principalAmount);
+
+        remainingBalance.set(newBalance);
+        return newBalance;
     }
 }
