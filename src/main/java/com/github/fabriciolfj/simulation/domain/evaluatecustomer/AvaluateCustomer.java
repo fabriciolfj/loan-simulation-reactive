@@ -16,7 +16,11 @@ public class AvaluateCustomer {
     private Parameter parameter;
 
     public boolean isCustomerValid(final BigDecimal amount, final int numberOfInstallments) {
-        var validations = List.of(isMonthlyIncomeValid(amount, numberOfInstallments), isScoreValid(), isScoreToAmountValid(amount));
+        var validations = List.of(
+                isMonthlyIncomeValid(amount, numberOfInstallments),
+                isScoreValid(),
+                isScoreToAmountValid(amount)
+        );
 
         return validations.stream().allMatch(p -> p);
     }

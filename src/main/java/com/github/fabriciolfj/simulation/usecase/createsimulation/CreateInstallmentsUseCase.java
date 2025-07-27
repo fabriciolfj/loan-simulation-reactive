@@ -30,9 +30,8 @@ public class CreateInstallmentsUseCase {
                         installmentNumber,
                         remainingBalance,
                         simulation,
-                        installmentNumber == simulation.getNumberOfInstallments()
-                ))
-                .toList();
+                        installmentNumber == simulation.getNumberOfInstallments())
+                ).toList();
     }
 
     private Installment createInstallment(final int installmentNumber,
@@ -43,7 +42,7 @@ public class CreateInstallmentsUseCase {
         BigDecimal interestAmount = simulation.calculateInterestAmount(remainingBalance.get());
         BigDecimal principalAmount = simulation.calcSubtractInstallmentAmount(interestAmount);
 
-        if (isLastInstallment && remainingBalance.get().compareTo(BigDecimal.ZERO) != 0) {
+        if (isLastInstallment && isRemainingGranterZero(remainingBalance)) {
             principalAmount = remainingBalance.get();
             interestAmount = simulation.calcSubtractInstallmentAmount(principalAmount);
         }
@@ -58,8 +57,11 @@ public class CreateInstallmentsUseCase {
                 .build();
     }
 
-    @NotNull
-    private static BigDecimal updateNewBalance(final AtomicReference<BigDecimal> remainingBalance, final BigDecimal principalAmount) {
+    private boolean isRemainingGranterZero(AtomicReference<BigDecimal> remainingBalance) {
+        return remainingBalance.get().compareTo(BigDecimal.ZERO) != 0;
+    }
+
+    private BigDecimal updateNewBalance(final AtomicReference<BigDecimal> remainingBalance, final BigDecimal principalAmount) {
         final BigDecimal newBalance = remainingBalance.get().subtract(principalAmount);
 
         remainingBalance.set(newBalance);
