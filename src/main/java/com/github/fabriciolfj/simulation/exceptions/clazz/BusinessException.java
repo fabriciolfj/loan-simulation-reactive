@@ -7,4 +7,8 @@ public class BusinessException extends RuntimeException {
     public BusinessException() {
         super(BUSINESS_ERROR.toMessage());
     }
+
+    public BusinessException(final String msg) {
+        super(msg);
+    }
 }

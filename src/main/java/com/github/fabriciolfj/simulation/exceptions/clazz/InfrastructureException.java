@@ -7,4 +7,8 @@ public class InfrastructureException extends RuntimeException {
     public InfrastructureException() {
         super(INFRA_ERROR.toMessage());
     }
+
+    public InfrastructureException(final String msg) {
+        super(msg);
+    }
 }

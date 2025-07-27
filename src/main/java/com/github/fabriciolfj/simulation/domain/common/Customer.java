@@ -1,14 +1,13 @@
 package com.github.fabriciolfj.simulation.domain.common;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Objects;
 
-@Data
+@Builder
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Customer {

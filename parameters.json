@@ -1,0 +1,26 @@
+{
+  "parameters": {
+    "amount_high": 100.000,
+    "amount_customer_high": 200.000,
+    "score_negative": 400,
+    "installments_high": 48,
+    "committment": 0.4,
+    "medium_score": 650,
+    "rate_default": 2.6,
+    "additional_amount": 0.5,
+    "metrics": [
+      {
+        "score": 750,
+        "rate": 0.8
+      },
+      {
+        "score": 650,
+        "rate": 0.8
+      },
+      {
+        "score": 500,
+        "rate": 0.8
+      }
+    ]
+  }
+}

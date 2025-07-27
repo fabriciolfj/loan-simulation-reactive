@@ -3,7 +3,6 @@ package com.github.fabriciolfj.simulation.entrypoint.common;
 import com.github.fabriciolfj.simulation.exceptions.clazz.ValidationException;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -13,7 +12,6 @@ import reactor.core.publisher.Mono;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@AllArgsConstructor
 @RequiredArgsConstructor
 @Component
 public class ValidationHandler {

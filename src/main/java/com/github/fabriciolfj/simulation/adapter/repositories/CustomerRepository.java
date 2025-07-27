@@ -7,8 +7,6 @@ import reactor.core.publisher.Mono;
 
 public interface CustomerRepository extends R2dbcRepository<CustomerData, Long> {
 
-    Mono<CustomerData> findBySsn(String ssn);
-
     @Query("SELECT * FROM customers WHERE cpf = :cpf AND active = true")
-    Mono<CustomerData> findBySsnAndActive(String cpf);
+    Mono<CustomerData> findByCpfAndActive(String cpf);
 }

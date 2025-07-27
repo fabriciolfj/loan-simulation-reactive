@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 public interface InstallmentRepository extends R2dbcRepository<InstallmentData, Long> {
 
-    Flux<InstallmentData> findByLoanSimulationIdOrderByInstallmentNumber(Long loanSimulationId);
+    Flux<InstallmentData> findBySimulationIdOrderByInstallmentNumber(Long loanSimulationId);
 
     @Query("SELECT * FROM installments WHERE loan_simulation_id = :loanSimulationId " +
             "AND payment_status = 'PENDING' ORDER BY installment_number")

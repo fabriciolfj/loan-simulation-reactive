@@ -1,0 +1,1 @@
+json-server --watch parameters.json --port 3000
