@@ -4,7 +4,6 @@ import com.github.fabriciolfj.simulation.domain.evaluatecustomer.AvaluateCustome
 import com.github.fabriciolfj.simulation.domain.proposal.Proposal;
 import com.github.fabriciolfj.simulation.domain.simulation.Simulation;
 import com.github.fabriciolfj.simulation.domain.simulation.SimulationStatus;
-import com.github.fabriciolfj.simulation.exceptions.clazz.BusinessException;
 import com.github.fabriciolfj.simulation.usecase.findavaluatecustomer.FindAvaluateCustomerGateway;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
