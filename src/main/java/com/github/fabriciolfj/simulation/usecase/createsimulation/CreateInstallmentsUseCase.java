@@ -2,7 +2,6 @@ package com.github.fabriciolfj.simulation.usecase.createsimulation;
 
 import com.github.fabriciolfj.simulation.domain.simulation.Installment;
 import com.github.fabriciolfj.simulation.domain.simulation.Simulation;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
@@ -13,6 +12,8 @@ import java.util.stream.IntStream;
 
 @Service
 public class CreateInstallmentsUseCase {
+
+    private static final long QUANTITY_DAY_OF_MONTHS = 30L;
 
     public Mono<Simulation> execute(final Simulation simulation) {
         return Mono.just(simulation)
@@ -47,12 +48,15 @@ public class CreateInstallmentsUseCase {
             interestAmount = simulation.calcSubtractInstallmentAmount(principalAmount);
         }
 
+        var payDate = simulation.getSimulationDate();
         return Installment.builder()
                 .installmentNumber(installmentNumber)
                 .installmentAmount(simulation.getInstallmentAmount())
                 .interestAmount(interestAmount)
                 .principalAmount(principalAmount)
+                .paymentDate(payDate.plusDays(installmentNumber * QUANTITY_DAY_OF_MONTHS))
                 .remainingBalance(updateNewBalance(remainingBalance, principalAmount))
+                .paidAmount(BigDecimal.ZERO)
                 .dueDate(simulation.calculateDueDate(installmentNumber))
                 .build();
     }

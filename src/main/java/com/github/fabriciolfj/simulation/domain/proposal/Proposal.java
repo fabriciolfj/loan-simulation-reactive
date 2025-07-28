@@ -1,21 +1,21 @@
 package com.github.fabriciolfj.simulation.domain.proposal;
 
 import com.github.fabriciolfj.simulation.exceptions.clazz.CalculationProposalNotFoundException;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Builder
-@Data
+@Getter
+@ToString(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
 @NoArgsConstructor
 public class Proposal {
 
+    @ToString.Include
     private ProposalDetails details;
+    @ToString.Include
     private String cpfCustomer;
     private CalculationProposal calculationProposal;
 

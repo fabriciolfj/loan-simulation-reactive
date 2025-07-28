@@ -51,9 +51,6 @@ public class SimulationData {
     @Column("approved_date")
     private LocalDateTime approvedDate;
 
-    @Column("approved_by")
-    private String approvedBy;
-
     @Column("active")
     private Boolean active;
 }

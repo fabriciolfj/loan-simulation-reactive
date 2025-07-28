@@ -7,6 +7,7 @@ import com.github.fabriciolfj.simulation.domain.simulation.SimulationDetails;
 import com.github.fabriciolfj.simulation.domain.simulation.SimulationStatus;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 
 public class ProposalToSimulationMapper {
 
@@ -16,6 +17,7 @@ public class ProposalToSimulationMapper {
         return Simulation
                 .builder()
                 .code(proposal.getCode())
+                .installments(Collections.emptyList())
                 .details(toDetails(proposal, status, customer))
                 .build();
     }

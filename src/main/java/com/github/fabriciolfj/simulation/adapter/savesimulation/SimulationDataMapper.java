@@ -7,15 +7,12 @@ public class SimulationDataMapper {
 
     private SimulationDataMapper() { }
 
-    private static final String USER = "system";
-
     public static SimulationData toData(final SimulationDetails details, final String code) {
         return SimulationData
                 .builder()
                 .code(code)
                 .approvedDate(details.getApprovedDate())
                 .customerId(details.getIdentifierCustomer())
-                .approvedBy(USER)
                 .simulationDate(details.getSimulationDate())
                 .requestedAmount(details.getRequestedAmount())
                 .status(details.getStatus().name())

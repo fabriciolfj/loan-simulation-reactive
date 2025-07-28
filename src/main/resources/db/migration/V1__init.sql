@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS customers (
     credit_score INTEGER,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     active BOOLEAN DEFAULT TRUE,
-    CONSTRAINT chk_cpf_format CHECK (cpf ~ '^\d{11}$'),
+    CONSTRAINT chk_cpf_format CHECK (cpf ~ '^\d{9}$'),
     CONSTRAINT chk_credit_score_range CHECK (credit_score >= 300 AND credit_score <= 850),
     CONSTRAINT chk_income_positive CHECK (monthly_income >= 0)
 );

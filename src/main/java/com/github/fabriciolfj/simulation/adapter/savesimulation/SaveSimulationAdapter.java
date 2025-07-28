@@ -31,8 +31,8 @@ public class SaveSimulationAdapter implements SaveSimulationGateway {
                 .flatMap(simulationRepository::save)
                 .map(c -> toData(simulation.getInstallments(), c.getId()))
                 .map(installmentRepository::saveAll)
+                .flatMap(v -> v.then(Mono.just(simulation)))
                 .doOnError(err -> log.error("fail save simulation {}, details {}", simulation.getCode(), err.getMessage()))
-                .onErrorResume(err -> Mono.error(new SaveSimulationException()))
-                .then(Mono.just(simulation));
+                .onErrorResume(err -> Mono.error(new SaveSimulationException()));
     }
 }

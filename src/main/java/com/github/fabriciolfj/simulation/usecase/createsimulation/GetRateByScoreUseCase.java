@@ -21,7 +21,7 @@ public class GetRateByScoreUseCase {
                 .map(Metric::getRate)
                 .doOnNext(value -> log.info("rate find {}", value))
                 .next()
-                .switchIfEmpty(Mono.just(parameter.getRateDefault().multiply(BigDecimal.valueOf(-1))))
+                .switchIfEmpty(Mono.just(parameter.getRateDefault()))
                 .doOnNext(value -> log.info("rate default {}", value));
     }
 }

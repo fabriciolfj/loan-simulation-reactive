@@ -5,6 +5,7 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.github.fabriciolfj.simulation.domain.common.ConstAmount.PERCENTAGE;
@@ -55,11 +56,15 @@ public class Simulation {
         return this.details.getInstallmentAmount();
     }
 
-    private SimulationStatus getStatus() {
-        return this.details.getStatus();
+    public LocalDate getSimulationDate() {
+        return this.details.getSimulationDate().toLocalDate();
     }
 
     public BigDecimal getRequestedAmount() {
         return this.details.getRequestedAmount();
+    }
+
+    private SimulationStatus getStatus() {
+        return this.details.getStatus();
     }
 }
