@@ -1,7 +1,5 @@
 package com.github.fabriciolfj.simulation.usecase.createsimulation;
 
-import com.github.fabriciolfj.simulation.domain.common.Customer;
-import com.github.fabriciolfj.simulation.domain.common.Parameter;
 import com.github.fabriciolfj.simulation.domain.evaluatecustomer.AvaluateCustomer;
 import com.github.fabriciolfj.simulation.domain.proposal.CalculationProposal;
 import com.github.fabriciolfj.simulation.domain.proposal.Proposal;
