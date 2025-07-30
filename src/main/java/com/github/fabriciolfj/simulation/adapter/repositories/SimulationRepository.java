@@ -13,7 +13,7 @@ public interface SimulationRepository extends R2dbcRepository<SimulationData, Lo
             "INNER JOIN customers c ON ls.customer_id = c.id " +
             "WHERE c.cpf = :cpf AND ls.active = true " +
             "ORDER BY ls.simulation_date DESC")
-    Flux<SimulationData> findByCustomerSsn(String cpf);
+    Flux<SimulationData> findByCustomerCpf(String cpf);
 
     @Query("SELECT * FROM loan_simulations WHERE status = :status AND active = true")
     Flux<SimulationData> findByStatus(String status);
