@@ -1,5 +1,6 @@
 -- Sample Customer Data Inserts
 -- File: customer_sample_data.sql
+DELETE FROM customers;
 
 -- Insert sample customers with diverse profiles
 INSERT INTO customers (cpf, name, email, phone, monthly_income, credit_score, created_at, active) VALUES
